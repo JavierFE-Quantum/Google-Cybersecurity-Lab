@@ -10,7 +10,7 @@ El objetivo fue actualizar los permisos del directorio `/projects` para restring
 ### Comprobación Inicial
 Se ejecutó el comando `ls -la` para auditar los permisos vigentes en el directorio.
 
-![Comprobación Inicial de Permisos](Permisos_Linux1.jpg)
+![Comprobación Inicial](Permisos_Linux1.jpeg?raw=true)
 
 ## 3. Acciones de Endurecimiento (Hardening)
 
@@ -18,19 +18,19 @@ Se ejecutó el comando `ls -la` para auditar los permisos vigentes en el directo
 Se revocó el permiso de escritura a "otros" para evitar modificaciones no autorizadas.
 * **Comando:** `chmod o-w project_k.txt`
 
-![Modificación de permisos en project_k.txt](Permisos_Linux2.jpg)
+![Cambio en Project K](Permisos_Linux2.jpg?raw=true)
 
 ### Gestión de archivos ocultos (.project_x.txt)
 Se eliminó la capacidad de escritura para el usuario y el grupo, manteniendo solo lectura para el grupo.
 * **Comando:** `chmod u-w,g-w,g+r .project_x.txt`
 
-![Ajuste de permisos en archivo oculto](Permisos_Linux3.jpg)
+![Archivo Oculto](Permisos_Linux3.jpg?raw=true)
 
 ### Seguridad a nivel de Directorio (drafts)
 Se eliminó el permiso de ejecución para el grupo, impidiendo el acceso al contenido sensible.
 * **Comando:** `chmod g-x drafts`
 
-![Restricción de ejecución en directorio drafts](Permisos_Linux4.jpg)
+![Directorio drafts](Permisos_Linux4.jpg?raw=true)
 
 ## 4. Conclusión
 La auditoría y las acciones de endurecimiento resultaron exitosas, alineando la estructura de archivos con las políticas de seguridad mediante el uso preciso de comandos de administración.
