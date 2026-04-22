@@ -1,0 +1,18 @@
+Consultas SQL
+
+En esta actividad, se aplican conocimientos en SQL (MariaDB) para realizar un triage de seguridad sobre los activos de una organización. El objetivo principal fue filtrar y analizar grandes volúmenes de datos (registros de inicio de sesión y base de datos de empleados) para identificar posibles amenazas, vulnerabilidades y organizar la información necesaria para parches de seguridad y auditorías internas. 
+ Investigación de Intentos Fallidos de Inicio de Sesión
+Consulta: SELECT * FROM log_in_attempts WHERE login_time > '18:00' AND success = 0;
+Análisis: Utilicé el operador lógico AND para filtrar eventos que ocurren fuera del horario laboral y que resultaron en fallos. Esta combinación es crítica para detectar ataques de fuerza bruta.
+ Monitoreo de Accesos por Fecha Específica
+Consulta: SELECT * FROM log_in_attempts WHERE login_date = '2022-05-09' OR login_date = '2022-05-08';
+Análisis: Se empleó el operador OR para capturar registros de una ventana de tiempo específica de 48 horas, permitiendo una revisión forense exhaustiva de un periodo de vulnerabilidad reportado.
+Exclusión de Tráfico Nacional (Detección de Intrusos)
+Consulta: SELECT * FROM log_in_attempts WHERE NOT country LIKE 'MEX%';
+Análisis: Utilicé la combinación de NOT y el comodín LIKE ('MEX%') para visualizar únicamente los accesos originados fuera del país. Esto permite concentrar el análisis en posibles intrusiones internacionales.
+Segmentación de Departamentos (Mantenimiento y Seguridad)
+Consulta: SELECT * FROM employees WHERE department = 'Finance' OR department = 'Sales';
+Análisis: Esta consulta permitió organizar a los empleados de áreas críticas para la aplicación de parches de software específicos, optimizando los recursos del departamento de TI.
+Conclusión 
+El uso estratégico de los operadores AND, OR y NOT en SQL permite transformar una base de datos masiva en información accionable. Esta habilidad es esencial para realizar un triage rápido y preciso, garantizando la seguridad de la infraestructura digital. 
+
